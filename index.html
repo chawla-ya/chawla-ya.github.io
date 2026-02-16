@@ -6,221 +6,107 @@
 <title>Yash Chawla | Robotics Engineer</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#9999b0;--border:#2a2a40}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  nav .logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.5px}
+  nav .logo span{color:var(--accent)}
+  nav ul{list-style:none;display:flex;gap:2rem}
+  nav ul a{color:var(--text2);text-decoration:none;font-size:0.9rem;font-weight:500;transition:color 0.3s}
+  nav ul a:hover{color:var(--accent)}
 
-  :root {
-    --bg: #0a0a0f;
-    --bg2: #12121a;
-    --bg3: #1a1a2e;
-    --accent: #6c63ff;
-    --accent2: #00d4aa;
-    --text: #e8e8f0;
-    --text2: #9999b0;
-    --border: #2a2a40;
-  }
+  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:6rem 2rem 4rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%,rgba(108,99,255,0.08) 0%,transparent 50%),radial-gradient(circle at 70% 50%,rgba(0,212,170,0.06) 0%,transparent 50%);animation:drift 20s ease-in-out infinite}
+  @keyframes drift{0%,100%{transform:translate(0,0) rotate(0deg)}33%{transform:translate(2%,-1%) rotate(1deg)}66%{transform:translate(-1%,1%) rotate(-1deg)}}
+  .hero-content{position:relative;max-width:800px;text-align:center}
+  .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:0.85rem;color:var(--accent2);border:1px solid rgba(0,212,170,0.3);padding:0.4rem 1rem;border-radius:20px;margin-bottom:1.5rem;animation:fadeUp 0.8s ease}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:1.5rem;animation:fadeUp 0.8s ease 0.1s both}
+  .hero h1 .gradient{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{font-size:1.15rem;color:var(--text2);max-width:600px;margin:0 auto 2rem;animation:fadeUp 0.8s ease 0.2s both}
+  .hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.8s ease 0.3s both}
+  .btn{padding:0.75rem 1.8rem;border-radius:8px;font-weight:600;font-size:0.95rem;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-primary:hover{background:#5a52e0;transform:translateY(-2px);box-shadow:0 8px 30px rgba(108,99,255,0.3)}
+  .btn-outline{border:1px solid var(--border);color:var(--text);background:transparent}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-  html { scroll-behavior: smooth; }
+  section{padding:5rem 2rem;max-width:1100px;margin:0 auto}
+  .section-label{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent);text-transform:uppercase;letter-spacing:3px;margin-bottom:0.5rem}
+  .section-title{font-size:2.2rem;font-weight:800;letter-spacing:-1px;margin-bottom:3rem}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+  .about-text{color:var(--text2);font-size:1.05rem}
+  .about-text p{margin-bottom:1rem}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+  .stat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem;text-align:center;transition:border-color 0.3s}
+  .stat:hover{border-color:var(--accent)}
+  .stat-num{font-size:2rem;font-weight:800;color:var(--accent)}
+  .stat-label{font-size:0.8rem;color:var(--text2);margin-top:0.3rem}
 
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    backdrop-filter: blur(20px);
-    background: rgba(10,10,15,0.8);
-    border-bottom: 1px solid var(--border);
-    padding: 1rem 2rem;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  nav .logo { font-weight: 800; font-size: 1.3rem; letter-spacing: -0.5px; }
-  nav .logo span { color: var(--accent); }
-  nav ul { list-style: none; display: flex; gap: 2rem; }
-  nav ul a { color: var(--text2); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-  nav ul a:hover { color: var(--accent); }
+  .timeline{position:relative;padding-left:2rem}
+  .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--accent2))}
+  .timeline-item{position:relative;margin-bottom:2.5rem}
+  .timeline-item::before{content:'';position:absolute;left:-2rem;top:0.5rem;width:12px;height:12px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);transform:translateX(-5px)}
+  .timeline-date{font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent2);margin-bottom:0.3rem}
+  .timeline-role{font-size:1.2rem;font-weight:700}
+  .timeline-company{color:var(--text2);font-size:0.95rem;margin-bottom:0.5rem}
+  .timeline-desc{color:var(--text2);font-size:0.9rem}
 
-  .hero {
-    min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    padding: 6rem 2rem 4rem;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; top: -50%; left: -50%;
-    width: 200%; height: 200%;
-    background: radial-gradient(circle at 30% 50%, rgba(108,99,255,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 50%, rgba(0,212,170,0.06) 0%, transparent 50%);
-    animation: drift 20s ease-in-out infinite;
-  }
-  @keyframes drift {
-    0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    33% { transform: translate(2%, -1%) rotate(1deg); }
-    66% { transform: translate(-1%, 1%) rotate(-1deg); }
-  }
-  .hero-content { position: relative; max-width: 800px; text-align: center; }
-  .hero-tag {
-    display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.85rem; color: var(--accent2);
-    border: 1px solid rgba(0,212,170,0.3);
-    padding: 0.4rem 1rem; border-radius: 20px;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease;
-  }
-  .hero h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 800; letter-spacing: -2px;
-    line-height: 1.1; margin-bottom: 1.5rem;
-    animation: fadeUp 0.8s ease 0.1s both;
-  }
-  .hero h1 .gradient {
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  .hero p {
-    font-size: 1.15rem; color: var(--text2); max-width: 600px; margin: 0 auto 2rem;
-    animation: fadeUp 0.8s ease 0.2s both;
-  }
-  .hero-btns {
-    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
-    animation: fadeUp 0.8s ease 0.3s both;
-  }
-  .btn {
-    padding: 0.75rem 1.8rem; border-radius: 8px; font-weight: 600;
-    font-size: 0.95rem; text-decoration: none; transition: all 0.3s; cursor: pointer; border: none;
-  }
-  .btn-primary { background: var(--accent); color: #fff; }
-  .btn-primary:hover { background: #5a52e0; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(108,99,255,0.3); }
-  .btn-outline { border: 1px solid var(--border); color: var(--text); background: transparent; }
-  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  /* PROJECT CARDS - THIS IS THE KEY SECTION */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
+  a.project-card{text-decoration:none;color:inherit;display:flex;flex-direction:column}
+  .project-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.4s;position:relative}
+  .project-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 20px 60px rgba(108,99,255,0.1)}
+  .project-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.4s}
+  .project-card:hover::after{opacity:1}
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+  /* CARD THUMBNAIL - fixed height, never stretches */
+  .card-thumb{
+    width:100%;
+    height:180px;
+    background:var(--bg3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:3rem;
+    border-bottom:1px solid var(--border);
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .card-thumb img{
+    display:block;
+    width:100%;
+    height:180px;
+    object-fit:cover;
   }
 
-  section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.8rem; color: var(--accent); text-transform: uppercase;
-    letter-spacing: 3px; margin-bottom: 0.5rem;
-  }
-  .section-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 3rem; }
+  .card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+  .card-body h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem}
+  .card-body p{color:var(--text2);font-size:0.88rem;margin-bottom:1rem;line-height:1.5;flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:1rem}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;padding:0.3rem 0.7rem;background:rgba(108,99,255,0.1);color:var(--accent);border-radius:4px;border:1px solid rgba(108,99,255,0.2)}
+  .card-link{font-size:0.85rem;font-weight:600;color:var(--accent2);display:flex;align-items:center;gap:0.3rem;transition:gap 0.3s}
+  .project-card:hover .card-link{gap:0.6rem}
 
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-  .about-text { color: var(--text2); font-size: 1.05rem; }
-  .about-text p { margin-bottom: 1rem; }
-  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .stat {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.5rem; text-align: center;
-    transition: border-color 0.3s;
-  }
-  .stat:hover { border-color: var(--accent); }
-  .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); }
-  .stat-label { font-size: 0.8rem; color: var(--text2); margin-top: 0.3rem; }
+  .skills-categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+  .skill-cat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.5rem}
+  .skill-cat h3{font-size:1rem;font-weight:700;margin-bottom:1rem;color:var(--accent2)}
+  .skill-items{display:flex;flex-wrap:wrap;gap:0.5rem}
+  .skill-item{font-size:0.85rem;padding:0.35rem 0.8rem;background:var(--bg3);border-radius:6px;color:var(--text2)}
 
-  .timeline { position: relative; padding-left: 2rem; }
-  .timeline::before {
-    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
-    width: 2px; background: linear-gradient(to bottom, var(--accent), var(--accent2));
-  }
-  .timeline-item { position: relative; margin-bottom: 2.5rem; }
-  .timeline-item::before {
-    content: ''; position: absolute; left: -2rem; top: 0.5rem;
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--accent); border: 3px solid var(--bg);
-    transform: translateX(-5px);
-  }
-  .timeline-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent2); margin-bottom: 0.3rem; }
-  .timeline-role { font-size: 1.2rem; font-weight: 700; }
-  .timeline-company { color: var(--text2); font-size: 0.95rem; margin-bottom: 0.5rem; }
-  .timeline-desc { color: var(--text2); font-size: 0.9rem; }
+  .contact-section{text-align:center;padding:5rem 2rem 6rem}
+  .contact-section p{color:var(--text2);font-size:1.1rem;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+  .contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+  .contact-link{display:flex;align-items:center;gap:0.5rem;padding:0.7rem 1.5rem;border-radius:8px;border:1px solid var(--border);color:var(--text);text-decoration:none;font-size:0.9rem;transition:all 0.3s}
+  .contact-link:hover{border-color:var(--accent);color:var(--accent);background:rgba(108,99,255,0.05)}
 
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
-  a.project-card { text-decoration: none; color: inherit; display: block; }
-  .project-card {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 16px; overflow: hidden;
-    transition: all 0.4s; position: relative;
-  }
-  .project-card:hover {
-    border-color: var(--accent); transform: translateY(-4px);
-    box-shadow: 0 20px 60px rgba(108,99,255,0.1);
-  }
-  .project-card::after {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    opacity: 0; transition: opacity 0.4s;
-  }
-  .project-card:hover::after { opacity: 1; }
-  .card-thumb {
-    width: 100%; height: 180px; background: var(--bg3);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3rem; border-bottom: 1px solid var(--border);
-    overflow: hidden;
-  }
-  .card-thumb img { width: 100%; height: 100%; object-fit: cover; }
-  .card-body { padding: 1.5rem; }
-  .card-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .card-body p { color: var(--text2); font-size: 0.88rem; margin-bottom: 1rem; line-height: 1.5; }
-  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-  .tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem; padding: 0.3rem 0.7rem;
-    background: rgba(108,99,255,0.1); color: var(--accent);
-    border-radius: 4px; border: 1px solid rgba(108,99,255,0.2);
-  }
-  .card-link {
-    font-size: 0.85rem; font-weight: 600; color: var(--accent2);
-    display: flex; align-items: center; gap: 0.3rem;
-    transition: gap 0.3s;
-  }
-  .project-card:hover .card-link { gap: 0.6rem; }
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--text2);font-size:0.8rem}
 
-  .skills-categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
-  .skill-cat {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 12px; padding: 1.5rem;
-  }
-  .skill-cat h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; color: var(--accent2); }
-  .skill-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .skill-item {
-    font-size: 0.85rem; padding: 0.35rem 0.8rem;
-    background: var(--bg3); border-radius: 6px; color: var(--text2);
-  }
-
-  .contact-section { text-align: center; padding: 5rem 2rem 6rem; }
-  .contact-section p { color: var(--text2); font-size: 1.1rem; margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
-  .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-  .contact-link {
-    display: flex; align-items: center; gap: 0.5rem;
-    padding: 0.7rem 1.5rem; border-radius: 8px;
-    border: 1px solid var(--border); color: var(--text);
-    text-decoration: none; font-size: 0.9rem; transition: all 0.3s;
-  }
-  .contact-link:hover { border-color: var(--accent); color: var(--accent); background: rgba(108,99,255,0.05); }
-
-  footer {
-    text-align: center; padding: 2rem;
-    border-top: 1px solid var(--border);
-    color: var(--text2); font-size: 0.8rem;
-  }
-
-  @media (max-width: 768px) {
-    nav ul { display: none; }
-    .about-grid { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr; }
-  }
-.card-thumb { height: 180px !important; max-height: 180px !important; overflow: hidden !important; }
-.card-thumb img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  @media(max-width:768px){nav ul{display:none}.about-grid{grid-template-columns:1fr}.projects-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -240,7 +126,7 @@
   <div class="hero-content">
     <div class="hero-tag">First-Year MS Robotics @ Northeastern University</div>
     <h1>Hi, I'm <span class="gradient">Yash</span>.<br>I build intelligent machines.</h1>
-    <p>Robotics engineer with expertise in mechanical design, control systems, computer vision, and motion planning — bridging mechanical systems with intelligent software.</p>
+    <p>Robotics engineer with expertise in control systems, computer vision, and motion planning — bridging mechanical systems with intelligent software.</p>
     <div class="hero-btns">
       <a href="#projects" class="btn btn-primary">View Projects</a>
       <a href="#contact" class="btn btn-outline">Get in Touch</a>
@@ -249,13 +135,13 @@
 </section>
 
 <section id="about">
-  <div class="section-label"></div>
+  <div class="section-label">// About</div>
   <div class="section-title">Engineer. Builder. Problem Solver.</div>
   <div class="about-grid">
     <div class="about-text">
       <p>I'm a first-year MS Robotics student at Northeastern University with a background in mechanical engineering from Purdue University. My work sits at the intersection of controls, perception, and intelligent systems.</p>
-      <p>Before grad school, I spent three years at Cummins Inc. as a Sr. Application Engineer, where I developed a patent for location-adaptive torque control and performed powertrain integration across electrical, mechanical, and control subsystems for my customer.</p>
-      <p>I'm passionate about autonomous systems, smart controls and building systems where precision engineering meets real-world impact.</p>
+      <p>Before grad school, I spent three years at Cummins Inc. as a Sr. Application Engineer, where I developed a patent for location-adaptive torque control and led powertrain integration across electrical, mechanical, and control subsystems.</p>
+      <p>I'm passionate about surgical robotics and building systems where precision engineering meets real-world impact.</p>
     </div>
     <div class="stats">
       <div class="stat"><div class="stat-num">4.0</div><div class="stat-label">GPA</div></div>
@@ -267,14 +153,14 @@
 </section>
 
 <section id="experience">
-  <div class="section-label"> </div>
+  <div class="section-label">// Experience</div>
   <div class="section-title">Where I've Worked</div>
   <div class="timeline">
     <div class="timeline-item">
       <div class="timeline-date">2025 – Present</div>
       <div class="timeline-role">MS Robotics – Graduate Student</div>
       <div class="timeline-company">Northeastern University, Boston</div>
-      <div class="timeline-desc">Coursework in mobile robotics, robot mechanics & control, and sensing and navigation. Projects in ML-based collision detection for robotic manipulators and visual SLAM systems.</div>
+      <div class="timeline-desc">Coursework in mobile robotics, robot mechanics & control, and computer vision. Projects in ML-based collision detection for robotic manipulators and visual SLAM systems.</div>
     </div>
     <div class="timeline-item">
       <div class="timeline-date">Jun 2022 – May 2025</div>
@@ -286,13 +172,13 @@
       <div class="timeline-date">2017 – 2022</div>
       <div class="timeline-role">BS Mechanical Engineering</div>
       <div class="timeline-company">Purdue University</div>
-      <div class="timeline-desc">Mechanical Engineering with a Statistics minor. Built foundational skills in design, dynamics, controls, and computational methods.</div>
+      <div class="timeline-desc">Mechanical Engineering with a Statistics minor. Built foundational skills in dynamics, controls, and computational methods.</div>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="section-label"> </div>
+  <div class="section-label">// Projects</div>
   <div class="section-title">What I've Built</div>
   <div class="projects-grid">
 
@@ -307,7 +193,7 @@
     </a>
 
     <a href="projects/visual-slam.html" target="_blank" class="project-card">
-      <div class="card-thumb">📍</div>
+      <div class="card-thumb"><img src="images/slam_visualization.png" alt="Visual SLAM"></div>
       <div class="card-body">
         <h3>Visual SLAM with AprilTags</h3>
         <p>Factor graph-based SLAM system using GTSAM optimization with AprilTag landmarks for robust pose estimation and mapping.</p>
@@ -317,7 +203,7 @@
     </a>
 
     <a href="projects/particle-filter.html" target="_blank" class="project-card">
-      <div class="card-thumb"><img src="../images/particle-filter.png" alt="Particle Filter on Differential Drive Robot",style="object-fit:contain;padding:0.5rem;"></div>
+      <div class="card-thumb"><img src="images/particle-filter.png" alt="Particle Filter"></div>
       <div class="card-body">
         <h3>Particle Filter Localization on SE(2)</h3>
         <p>Implemented particle filtering for mobile robot localization with probabilistic motion and sensor models on the SE(2) manifold.</p>
@@ -337,7 +223,8 @@
     </a>
 
     <a href="projects/pathfinding.html" target="_blank" class="project-card">
-      <div class="card-thumb" style="height:180px;overflow:hidden;position:relative;"><img src="images/path_comparison.png" alt="Pathfinding" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;object-fit:cover;"></div>
+      <div class="card-thumb"><img src="images/path_comparison.png" alt="Pathfinding"></div>
+      <div class="card-body">
         <h3>A* Pathfinding with Probabilistic Roadmaps</h3>
         <p>Path planning pipeline combining PRM sampling with A* graph search for efficient robot navigation in complex environments.</p>
         <div class="tags"><span class="tag">A*</span><span class="tag">PRM</span><span class="tag">Path Planning</span><span class="tag">Python</span></div>
@@ -366,7 +253,7 @@
     </a>
 
     <a href="projects/pendulum-dynamics.html" target="_blank" class="project-card">
-      <div class="card-thumb"><img src="images/pendulum-setup.png" alt="3R Pendulum Simulation"></div>
+      <div class="card-thumb"><img src="images/pendulum-poses.png" alt="3R Pendulum Simulation"></div>
       <div class="card-body">
         <h3>3R Pendulum Forward Kinematic Analysis</h3>
         <p>Simulated chaotic dynamics of a triple pendulum using Lagrangian mechanics with hand-derived M, C, G matrices and Euler integration in Python.</p>
@@ -376,7 +263,7 @@
     </a>
 
     <a href="projects/icp-registration.html" target="_blank" class="project-card">
-      <div class="card-thumb"><img src="images/icp-registration.png" alt="ICP Result"></div>
+      <div class="card-thumb"><img src="images/icp-registration.png" alt="ICP Registration"></div>
       <div class="card-body">
         <h3>ICP 3D Point Cloud Registration</h3>
         <p>Iterative Closest Point algorithm for aligning 3D point clouds with SVD-based transformation estimation, KD-tree acceleration, and convergence analysis.</p>
@@ -389,66 +276,24 @@
 </section>
 
 <section id="skills">
-  <div class="section-label"> </div>
+  <div class="section-label">// Skills</div>
   <div class="section-title">Technical Toolkit</div>
   <div class="skills-categories">
-    <div class="skill-cat">
-      <h3>Robotics & Controls</h3>
-      <div class="skill-items">
-        <span class="skill-item">Kinematics</span>
-        <span class="skill-item">Dynamics</span>
-        <span class="skill-item">PID/PD/PI Control</span>
-        <span class="skill-item">SLAM</span>
-        <span class="skill-item">Motion Planning</span>
-        <span class="skill-item">State Estimation</span>
-        <span class="skill-item">EKF / Particle Filters</span>
-	<span class="skill-item">Sensor Fusion</span>
-      </div>
-    </div>
-    <div class="skill-cat">
-      <h3>Programming & Tools</h3>
-      <div class="skill-items">
-        <span class="skill-item">Python</span>
-        <span class="skill-item">C++</span>
-        <span class="skill-item">MATLAB / Simulink</span>
-        <span class="skill-item">ROS2</span>
-        <span class="skill-item">Git</span>
-        <span class="skill-item">Linux</span>
-      </div>
-    </div>
-    <div class="skill-cat">
-      <h3>AI & Vision</h3>
-      <div class="skill-items">
-        <span class="skill-item">PyTorch</span>
-        <span class="skill-item">Computer Vision</span>
-        <span class="skill-item">Neural Networks</span>
-        <span class="skill-item">OpenCV</span>
-        <span class="skill-item">3D Geometry</span>
-        <span class="skill-item">Camera Calibration</span>
-      </div>
-    </div>
-    <div class="skill-cat">
-      <h3>Engineering</h3>
-      <div class="skill-items">
-        <span class="skill-item">Mechanical Design</span>
-        <span class="skill-item">Powertrain Systems</span>
-        <span class="skill-item">Mechanism Design</span>
-        <span class="skill-item">SolidWorks</span>
-        <span class="skill-item">Thermal Systems</span>
-        <span class="skill-item">FEA</span>
-      </div>
-    </div>
+    <div class="skill-cat"><h3>Robotics & Controls</h3><div class="skill-items"><span class="skill-item">Kinematics</span><span class="skill-item">Dynamics</span><span class="skill-item">PID/PD/PI Control</span><span class="skill-item">SLAM</span><span class="skill-item">Motion Planning</span><span class="skill-item">State Estimation</span><span class="skill-item">EKF / Particle Filters</span></div></div>
+    <div class="skill-cat"><h3>Programming & Tools</h3><div class="skill-items"><span class="skill-item">Python</span><span class="skill-item">C++</span><span class="skill-item">MATLAB / Simulink</span><span class="skill-item">ROS2</span><span class="skill-item">Git</span><span class="skill-item">Linux</span></div></div>
+    <div class="skill-cat"><h3>AI & Vision</h3><div class="skill-items"><span class="skill-item">PyTorch</span><span class="skill-item">Computer Vision</span><span class="skill-item">Neural Networks</span><span class="skill-item">OpenCV</span><span class="skill-item">3D Geometry</span><span class="skill-item">Camera Calibration</span></div></div>
+    <div class="skill-cat"><h3>Engineering</h3><div class="skill-items"><span class="skill-item">Mechanical Design</span><span class="skill-item">Powertrain Systems</span><span class="skill-item">Mechanism Design</span><span class="skill-item">SolidWorks</span><span class="skill-item">Thermal Systems</span><span class="skill-item">FEA</span></div></div>
   </div>
 </section>
 
 <section id="contact" class="contact-section">
-  <div class="section-label"> </div>
+  <div class="section-label">// Contact</div>
   <div class="section-title">Let's Connect</div>
-  <p>I'm currently exploring opportunities in Robotics, Controls and intelligent systems. Let's talk.</p>
+  <p>I'm currently exploring opportunities in surgical robotics and intelligent systems. Let's talk.</p>
   <div class="contact-links">
-    <a href="mailto:chawla.ya@northeastern.edu" class="contact-link">✉️ Email</a>
-    <a href="https://linkedin.com/in/yash-chawla3599" class="contact-link">💼 LinkedIn</a>
-    <a href="https://github.com/yourprofile" class="contact-link">🐙 GitHub</a>
+    <a href="mailto:your.email@northeastern.edu" class="contact-link">✉️ Email</a>
+    <a href="https://linkedin.com/in/yourprofile" class="contact-link">💼 LinkedIn</a>
+    <a href="https://github.com/chawla-ya" class="contact-link">🐙 GitHub</a>
   </div>
 </section>
 

@@ -34,7 +34,7 @@
   <div class="tags"><span class="tag">Lagrangian Mechanics</span><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Chaos Theory</span><span class="tag">Forward Dynamics</span><span class="tag">Euler Integration</span><span class="tag">Matplotlib</span></div>
 </div>
 <div class="project-content">
-  <div class="img-placeholder"><img src="../images/pendulum-poses.png" alt="3R Pendulum Simulation"></div>
+  <div class="img-placeholder"><img src="../images/pendulum-setup.png" alt="3R Pendulum Simulation"></div>
 
   <div class="sec"><h2>Overview</h2><p>Simulated the forward dynamics of a planar 3R (triple) pendulum — a classic example of chaotic behavior where the system follows no predictable path after the first few seconds of being released. The project involved deriving the full equations of motion using Lagrangian mechanics, implementing them in Python, and analyzing the chaotic dynamics across multiple simulation timescales.</p><p>The system consists of three massless links (lengths l₁, l₂, l₃) each connected by revolute joints, with concentrated point masses (m₁, m₂, m₃) at each link tip. Angles θᵢ are defined relative to the previous reference frame, with θ₁ measured from the space frame {s}. The pendulum is released from rest with all joints at 0° (horizontal) and falls under gravity with no friction or applied torques.</p></div>
 
@@ -66,7 +66,7 @@
   </div>
 
   <div class="sec"><h2>Results & Discussion</h2>
-    <div class="img-placeholder" style="aspect-ratio:3/1"></div>
+    <div class="img-placeholder" style="aspect-ratio:3/1"><img src="../images/pendulum-poses.png" alt="3R Pendulum Poses"></div>
     <p>At t = 0, the pendulum begins falling mostly straight. Over the first second, θ₁ decreases consistently while θ₂ and θ₃ exhibit nearly mirrored behavior — smooth and predictable. This initial orderly behavior rapidly descends into chaos shortly after.</p>
     <p>At t = 5s and t = 10s, the angle and velocity plots show no discernible pattern as the pendulum oscillates chaotically at high frequency. Comparing poses at the same timestamp (t = 2.5s) across different simulation lengths reveals entirely different configurations, confirming sensitive dependence on initial conditions — the hallmark of chaos.</p>
     <p>A key observation was the cascading amplification of motion through the kinematic chain. Compared to θ₁, both θ̇₂ and θ̇₃ demonstrate much more dynamic behavior with rapid oscillations swinging positive and negative, indicating the outer links alternate between rotating with and against link 1. Peak velocities for joints 2 and 3 are significantly higher than joint 1. θ₃ shows the most complex behavior, showcasing the cascading effect of dynamics through the chain.</p>

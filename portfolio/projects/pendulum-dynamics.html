@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3R Pendulum Dynamics | Yash</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#9999b0;--border:#2a2a40}
+  html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  nav .logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.5px;text-decoration:none;color:var(--text)}nav .logo span{color:var(--accent)}
+  .back-link{color:var(--text2);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:.4rem;transition:color .3s}.back-link:hover{color:var(--accent)}
+  .project-hero{padding:8rem 2rem 3rem;max-width:900px;margin:0 auto;animation:fadeUp .6s ease}.project-hero .icon{font-size:3rem;margin-bottom:1rem}
+  .project-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:1rem}
+  .meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}.meta-item{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent2)}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}.tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.3rem .7rem;background:rgba(108,99,255,0.1);color:var(--accent);border-radius:4px;border:1px solid rgba(108,99,255,0.2)}
+  .project-content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+  .img-placeholder{width:100%;aspect-ratio:16/9;background:var(--bg2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.9rem;margin-bottom:2rem;overflow:hidden}.img-placeholder img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+  .sec{margin-bottom:3rem}.sec h2{font-size:1.4rem;font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}.sec h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--accent2)}.sec p{color:var(--text2);font-size:1rem;margin-bottom:1rem}
+  .math{font-family:'JetBrains Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;margin:1rem 0;font-size:.85rem;color:var(--accent);overflow-x:auto;text-align:center}
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.feat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem}.feat h4{font-size:.95rem;font-weight:600;margin-bottom:.3rem;color:var(--accent2)}.feat p{font-size:.85rem;color:var(--text2);margin:0}
+  .proj-links{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}.pl{padding:.7rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s}.pl-primary{background:var(--accent);color:#fff}.pl-primary:hover{background:#5a52e0;transform:translateY(-2px)}.pl-outline{border:1px solid var(--border);color:var(--text)}.pl-outline:hover{border-color:var(--accent);color:var(--accent)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><a href="../index.html" class="logo">Y<span>.</span>dev</a><a href="../index.html" class="back-link">← Back to Portfolio</a></nav>
+<div class="project-hero">
+  <div class="icon">🔗</div>
+  <h1>3R Pendulum Forward Kinematic Analysis</h1>
+  <div class="meta"><div class="meta-item">📅 December 2025</div><div class="meta-item">🏫 Northeastern University</div><div class="meta-item">📂 ME 5250 – Robot Mechanics & Control</div></div>
+  <div class="tags"><span class="tag">Lagrangian Mechanics</span><span class="tag">Python</span><span class="tag">NumPy</span><span class="tag">Chaos Theory</span><span class="tag">Forward Dynamics</span><span class="tag">Euler Integration</span><span class="tag">Matplotlib</span></div>
+</div>
+<div class="project-content">
+  <div class="img-placeholder"><img src="../images/pendulum-setup.png" alt="3R Pendulum Experimental Setup - Three links with concentrated masses and revolute joints"></div>
+
+  <div class="sec"><h2>Overview</h2><p>Simulated the forward dynamics of a planar 3R (triple) pendulum — a classic example of chaotic behavior where the system follows no predictable path after the first few seconds of being released. The project involved deriving the full equations of motion using Lagrangian mechanics, implementing them in Python, and analyzing the chaotic dynamics across multiple simulation timescales.</p><p>The system consists of three massless links (lengths l₁, l₂, l₃) each connected by revolute joints, with concentrated point masses (m₁, m₂, m₃) at each link tip. Angles θᵢ are defined relative to the previous reference frame, with θ₁ measured from the space frame {s}. The pendulum is released from rest with all joints at 0° (horizontal) and falls under gravity with no friction or applied torques.</p></div>
+
+  <div class="sec"><h2>Forward Kinematics</h2><p>The end effector position was derived as:</p>
+    <div class="math">x_b = l₁cosθ₁ + l₂cos(θ₁+θ₂) + l₃cos(θ₁+θ₂+θ₃)<br>y_b = l₁sinθ₁ + l₂sin(θ₁+θ₂) + l₃sin(θ₁+θ₂+θ₃)</div>
+    <p>Time derivatives give the tip velocity, and by setting link lengths to zero selectively, the velocity of each individual link tip is obtained. These velocities feed directly into the kinetic energy terms of the Lagrangian.</p>
+  </div>
+
+  <div class="sec"><h2>Lagrangian Dynamics</h2><p>The Lagrangian L = KE − PE was computed for each link, where KE = ½mv² and PE = mgh. Applying the Euler-Lagrange equation to the total Lagrangian yields the standard manipulator equation of motion:</p>
+    <div class="math">M(θ)θ̈ + C(θ, θ̇) + G(θ) = τ</div>
+    <p>All three matrices were derived by hand and implemented as modular Python functions:</p>
+    <h3>Mass Matrix M(θ)</h3><p>A symmetric 3×3 matrix capturing inertial coupling between all joints. Elements depend on link lengths, masses, and cosines of θ₂, θ₃, and (θ₂+θ₃), reflecting the configuration-dependent coupling between joints. The symmetry M₁₂ = M₂₁ and M₁₃ = M₃₁ was verified analytically.</p>
+    <h3>Coriolis Vector C(θ, θ̇)</h3><p>A 3×1 vector capturing velocity-dependent forces including centrifugal and Coriolis effects. These terms involve products of joint velocities (θ̇ᵢθ̇ⱼ) multiplied by sine functions of joint angles, representing the nonlinear coupling that drives chaotic behavior.</p>
+    <h3>Gravity Vector G(θ)</h3><p>A 3×1 vector with terms proportional to cosines of cumulative joint angles, capturing the gravitational torque on each joint due to the weight of all downstream masses.</p>
+  </div>
+
+  <div class="sec"><h2>Numerical Integration</h2><p>The equations were solved iteratively using Euler integration following the algorithm from Lynch & Park's <em>Modern Robotics</em> (Section 8.5). At each timestep, joint accelerations are computed by inverting the mass matrix:</p>
+    <div class="math">θ̈ = M⁻¹(θ)[τ − C(θ, θ̇) − G(θ)]</div>
+    <p>With input torques τ set to zero (free fall) and initial conditions θ = θ̇ = [0, 0, 0] (horizontal, at rest). NumPy's <code>linalg.solve</code> was used for the matrix inversion. A key finding was that numerical stability was highly sensitive to timestep size — a 1-second simulation worked with dt = 0.001s, but a 5-second simulation required dt = 0.0005s to prevent the integration from diverging.</p>
+  </div>
+
+  <div class="sec"><h2>Key Features</h2>
+    <div class="feat-grid">
+      <div class="feat"><h4>Full Lagrangian Derivation</h4><p>Hand-derived M(θ), C(θ,θ̇), and G(θ) matrices for the 3-link system, verified computationally.</p></div>
+      <div class="feat"><h4>Chaotic Dynamics Visualization</h4><p>Pose snapshots at multiple timesteps showing transition from predictable to chaotic motion.</p></div>
+      <div class="feat"><h4>Multi-Timescale Analysis</h4><p>Simulations at t_f = 1s, 5s, and 10s revealing progressive onset of chaotic behavior.</p></div>
+      <div class="feat"><h4>Modular Python Implementation</h4><p>Separate functions for M, C, G matrices and forward dynamics, enabling easy parameter changes.</p></div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Results & Discussion</h2>
+    <div class="img-placeholder" style="aspect-ratio:3/1"><img src="../images/pendulum-poses.png" alt="3R Pendulum simulation poses at t=0, 2.5, 5, 7.5, and 10 seconds showing chaotic evolution"></div>
+    <p>At t = 0, the pendulum begins falling mostly straight. Over the first second, θ₁ decreases consistently while θ₂ and θ₃ exhibit nearly mirrored behavior — smooth and predictable. This initial orderly behavior rapidly descends into chaos shortly after.</p>
+    <p>At t = 5s and t = 10s, the angle and velocity plots show no discernible pattern as the pendulum oscillates chaotically at high frequency. Comparing poses at the same timestamp (t = 2.5s) across different simulation lengths reveals entirely different configurations, confirming sensitive dependence on initial conditions — the hallmark of chaos.</p>
+    <p>A key observation was the cascading amplification of motion through the kinematic chain. Compared to θ₁, both θ̇₂ and θ̇₃ demonstrate much more dynamic behavior with rapid oscillations swinging positive and negative, indicating the outer links alternate between rotating with and against link 1. Peak velocities for joints 2 and 3 are significantly higher than joint 1. θ₃ shows the most complex behavior, showcasing the cascading effect of dynamics through the chain.</p>
+  </div>
+
+  <div class="sec"><h2>Code Architecture</h2><p>The simulation was implemented in Python with a modular structure for ease of debugging and parameter exploration. Key functions include <code>mass_matrix()</code>, <code>coriolis_matrix()</code>, <code>gravity_matrix()</code>, <code>forward_dynamics()</code>, <code>calculate_iterations()</code> (Euler integration loop), and <code>calculate_positions()</code> (joint-to-Cartesian mapping for visualization). All physical parameters — masses, lengths, simulation time, timestep, and initial conditions — are configurable. Input torques can be applied by modifying the τ array, enabling the model to respond to external forces at the joints.</p></div>
+
+  <div class="sec"><h2>What I Learned</h2><p>This project reinforced my skills in Lagrangian dynamics — the same M(θ)θ̈ + C(θ,θ̇) + G(θ) = τ formulation that underpins robot manipulator control. Deriving all matrix elements by hand and verifying them computationally gave me deep understanding of how inertial coupling, Coriolis effects, and gravity interact in multi-link systems. The numerical stability challenges with Euler integration highlighted why integrator choice matters for stiff and chaotic systems, and the chaotic dynamics vividly demonstrated the sensitivity that makes real robot control so challenging.</p></div>
+
+  <div class="proj-links"><a href="#" class="pl pl-primary">View on GitHub</a><a href="../index.html#projects" class="pl pl-outline">← All Projects</a></div>
+</div>
+</body>
+</html>

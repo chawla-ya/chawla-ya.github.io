@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RCM Mechanism Analysis | Yash</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#9999b0;--border:#2a2a40}
+  html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  nav .logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.5px;text-decoration:none;color:var(--text)}nav .logo span{color:var(--accent)}
+  .back-link{color:var(--text2);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:.4rem;transition:color .3s}.back-link:hover{color:var(--accent)}
+  .project-hero{padding:8rem 2rem 3rem;max-width:900px;margin:0 auto;animation:fadeUp .6s ease}.project-hero .icon{font-size:3rem;margin-bottom:1rem}
+  .project-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:1rem}
+  .meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}.meta-item{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent2)}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}.tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.3rem .7rem;background:rgba(108,99,255,0.1);color:var(--accent);border-radius:4px;border:1px solid rgba(108,99,255,0.2)}
+  .project-content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+  .img-placeholder{width:100%;aspect-ratio:16/9;background:var(--bg2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.9rem;margin-bottom:2rem;overflow:hidden}.img-placeholder img{width:100%;height:100%;object-fit:contain;border-radius:12px}
+  .sec{margin-bottom:3rem}.sec h2{font-size:1.4rem;font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}.sec h3{font-size:1.1rem;font-weight:600;margin:1.5rem 0 .5rem;color:var(--accent2)}.sec p{color:var(--text2);font-size:1rem;margin-bottom:1rem}
+  .math{font-family:'JetBrains Mono',monospace;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.5rem;margin:1rem 0;font-size:.9rem;color:var(--accent);text-align:center}
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.feat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem}.feat h4{font-size:.95rem;font-weight:600;margin-bottom:.3rem;color:var(--accent2)}.feat p{font-size:.85rem;color:var(--text2);margin:0}
+  .component-list{margin:1rem 0;padding-left:1.2rem}.component-list li{color:var(--text2);font-size:.95rem;margin-bottom:.5rem}.component-list li strong{color:var(--text);font-weight:600}
+  .proj-links{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}.pl{padding:.7rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s}.pl-primary{background:var(--accent);color:#fff}.pl-primary:hover{background:#5a52e0;transform:translateY(-2px)}.pl-outline{border:1px solid var(--border);color:var(--text)}.pl-outline:hover{border-color:var(--accent);color:var(--accent)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><a href="../index.html" class="logo">Y<span>.</span>dev</a><a href="../index.html" class="back-link">← Back to Portfolio</a></nav>
+<div class="project-hero">
+  <div class="icon">🏥</div>
+  <h1>2-DOF RCM Mechanism for Ear & Facial Surgery</h1>
+  <div class="meta"><div class="meta-item">📅 2025</div><div class="meta-item">🏫 Northeastern University</div><div class="meta-item">📂 ME 5250 – Robot Mechanics & Control</div></div>
+  <div class="tags"><span class="tag">Kinematics</span><span class="tag">Surgical Robotics</span><span class="tag">Mechanism Design</span><span class="tag">RCM</span><span class="tag">Grubler's Formula</span><span class="tag">SolidWorks</span><span class="tag">Agile Eye</span></div>
+</div>
+<div class="project-content">
+  <div class="img-placeholder"><img src="../images/rcm-mechanism.png" alt="RCM Double-Parallelogram Mechanism - SolidWorks CAD Model"></div>
+
+  <div class="sec"><h2>Overview</h2><p>Designed and analyzed a 2-DOF Remote Center of Motion (RCM) mechanism for ear and facial microsurgery, where extremely fine precision is required in tight workspaces. The mechanism is based on a modified agile eye architecture — a robot with revolute joints whose axes intersect at a single virtual point. The end effector pivots about this remote fixed point (the RCM) without any physical joint at that location, which is critical for minimally invasive procedures where the instrument passes through a trocar port or incision.</p></div>
+
+  <div class="sec"><h2>Mechanism Architecture</h2><p>The mechanism uses a double-parallelogram linkage that maintains two sets of parallel links at all times. This parallelism constraint ensures that motion of either input is mirrored as an opposite motion on the output side, keeping the pivot point stationary. The key components are:</p>
+    <ol class="component-list">
+      <li><strong>Revolute Platform</strong> — provides the first revolute input θ₁</li>
+      <li><strong>Revolute Base</strong> — ground / fixed frame of the mechanism</li>
+      <li><strong>Primary Input Link</strong> — provides the second revolute input θ₂</li>
+      <li><strong>Secondary Input Link</strong> — parallel with primary input link and end effector</li>
+      <li><strong>Primary & Secondary Support Links</strong> — parallel with each other, forming the parallelogram with both input links</li>
+      <li><strong>End Effector</strong> — houses the medical trocar or surgical instrument, pivots about the RCM</li>
+    </ol>
+    <p>The double-parallelogram geometry allows the end effector to pitch up/down and yaw through the fixed RCM point without translating the pivot itself — critical for avoiding tissue damage in surgery or maintaining a fixed optical focus point in camera systems.</p>
+  </div>
+
+  <div class="sec"><h2>Mobility Analysis (Grubler's Formula)</h2><p>Since the mechanism operates over a virtual spherical joint, the spherical form of Grubler's formula was applied with M = 3, N = 7 (6 links + ground), J = 9 joints, and Σfᵢ = 9:</p>
+    <div class="math">DOF = 3(7 − 1 − 9) + 9 = 0 → Over-constrained</div>
+    <p>The initial result of 0 DOF indicates over-constraint due to a redundant revolute joint in the yoke of the revolute platform. After removing this redundant joint (dropping 1 joint and 1 DOF from the count):</p>
+    <div class="math">DOF = 3(7 − 1 − 8) + 8 = 2 DOF ✓</div>
+    <p>This confirms the expected 2-DOF behavior: the end effector can pitch (θ₂) and yaw (θ₁) about the remote center. The input-to-output relationship is a direct 1:1 mapping — θ_input = θ_output for both joints.</p>
+  </div>
+
+  <div class="sec"><h2>Configuration Space & Workspace</h2><p>A SolidWorks motion study was conducted to map the joint limits. The results showed θ₁ has a range of ±10° and θ₂ has a range of ±65°. The limited range of θ₁ was unexpected — intuitively it should allow ±90°, but at the singularity condition for θ₂, the links create hard interference with the robot base, constraining θ₁.</p><p>The resulting workspace is an elliptical cone with the RCM point at its vertex. The major axis is defined by the θ₂ range (±65°) and the minor axis by θ₁ (±10°). The configuration space is directly dependent on link thickness — the 10mm links used in this design could be reduced to expand the angular range, decrease link inertia, and reduce actuated mass.</p></div>
+
+  <div class="sec"><h2>Singularity Analysis</h2><p>Two singularity conditions were identified. For θ₂, singularity occurs when the two upper parallel links make contact with each other. For θ₁, singularity occurs when the links contact the side of the base. Both singularity boundaries can be pushed to higher angular values by reducing link thickness or increasing the spacing between parallel links.</p></div>
+
+  <div class="sec"><h2>Key Features</h2>
+    <div class="feat-grid">
+      <div class="feat"><h4>Agile Eye Architecture</h4><p>Modified agile eye mechanism with revolute axes intersecting at a virtual remote center for safe surgical pivoting.</p></div>
+      <div class="feat"><h4>Spherical Grubler Analysis</h4><p>Mobility verification using spherical Grubler's formula, identifying and resolving over-constraint from redundant yoke joint.</p></div>
+      <div class="feat"><h4>Motion Study Validation</h4><p>SolidWorks motion study mapping θ₁ (±10°) and θ₂ (±65°) ranges with interference-based joint limits.</p></div>
+      <div class="feat"><h4>Elliptical Cone Workspace</h4><p>Characterized workspace geometry as an elliptical cone with the RCM at its vertex, axes defined by joint ranges.</p></div>
+    </div>
+  </div>
+
+  <div class="sec"><h2>Forward Kinematics</h2><p>Due to the 1:1 input-output mapping of the parallelogram linkage, forward kinematics can be solved by inspection. The homogeneous transformation for any mechanism motion is a pure rotation matrix (R appended with a zero translation column), since the end effector undergoes pure rotation about the RCM with no translation. The full transformation T_SB from the world frame {S} to the body frame {B} does include a translation component accounting for the offset of the end effector frame from the world origin, with magnitude dependent on the link lengths.</p></div>
+
+  <div class="sec"><h2>Proposed Design Improvements</h2><p>The current 2-DOF design was analyzed for potential upgrades. Adding a belt/screw-driven cylindrical joint on the end effector would provide both prismatic actuation along the instrument axis and rotation about the body-centric Y axis — adding 2 DOF while minimizing sprung mass for faster, more precise control. Replacing the revolute base joint with a spherical joint would add curvilinear Z-axis translation, though for surgical applications this additional freedom may be less desirable from a safety standpoint.</p></div>
+
+  <div class="sec"><h2>What I Learned</h2><p>This project deepened my understanding of closed-loop mechanism design and its direct application to surgical robotics. Working through the Grubler analysis — encountering the over-constraint, identifying the redundant joint, and resolving it — was a valuable exercise in debugging mechanism mobility. The SolidWorks motion studies revealed non-obvious coupling between joint limits and singularities that wouldn't be apparent from kinematic equations alone. This project solidified my interest in pursuing surgical robotics as a career path.</p></div>
+
+  <div class="proj-links"><a href="../index.html#projects" class="pl pl-outline">← All Projects</a></div>
+</div>
+</body>
+</html>

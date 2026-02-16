@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visual SLAM with AprilTags | Yash</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#9999b0;--border:#2a2a40}
+  html{scroll-behavior:smooth}body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  nav .logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.5px;text-decoration:none;color:var(--text)}nav .logo span{color:var(--accent)}
+  .back-link{color:var(--text2);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:.4rem;transition:color .3s}.back-link:hover{color:var(--accent)}
+  .project-hero{padding:8rem 2rem 3rem;max-width:900px;margin:0 auto;animation:fadeUp .6s ease}.project-hero .icon{font-size:3rem;margin-bottom:1rem}
+  .project-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:1rem}
+  .meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}.meta-item{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent2)}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}.tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.3rem .7rem;background:rgba(108,99,255,0.1);color:var(--accent);border-radius:4px;border:1px solid rgba(108,99,255,0.2)}
+  .project-content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+  .img-placeholder{width:100%;aspect-ratio:16/9;background:var(--bg2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.9rem;margin-bottom:2rem;overflow:hidden}.img-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+  .sec{margin-bottom:3rem}.sec h2{font-size:1.4rem;font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}.sec p{color:var(--text2);font-size:1rem;margin-bottom:1rem}
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}.feat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem}.feat h4{font-size:.95rem;font-weight:600;margin-bottom:.3rem;color:var(--accent2)}.feat p{font-size:.85rem;color:var(--text2);margin:0}
+  .proj-links{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}.pl{padding:.7rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s}.pl-primary{background:var(--accent);color:#fff}.pl-primary:hover{background:#5a52e0;transform:translateY(-2px)}.pl-outline{border:1px solid var(--border);color:var(--text)}.pl-outline:hover{border-color:var(--accent);color:var(--accent)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}@media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><a href="../index.html" class="logo">Y<span>.</span>dev</a><a href="../index.html" class="back-link">← Back to Portfolio</a></nav>
+<div class="project-hero">
+  <div class="icon">📍</div>
+  <h1>Visual SLAM with AprilTags</h1>
+  <div class="meta"><div class="meta-item">📅 2025</div><div class="meta-item">🏫 Northeastern University</div><div class="meta-item">📂 Mobile Robotics</div></div>
+  <div class="tags"><span class="tag">GTSAM</span><span class="tag">Factor Graphs</span><span class="tag">Computer Vision</span><span class="tag">SLAM</span><span class="tag">Python</span><span class="tag">AprilTags</span></div>
+</div>
+<div class="project-content">
+  <div class="img-placeholder">📸 Add factor graph visualization or SLAM map output here</div>
+  <div class="sec"><h2>Overview</h2><p>Built a visual SLAM (Simultaneous Localization and Mapping) system that uses AprilTag fiducial markers as landmarks. The system leverages factor graph optimization via the GTSAM library to jointly estimate camera poses and landmark positions from sequential image observations.</p></div>
+  <div class="sec"><h2>Problem</h2><p>A mobile robot navigating an environment needs to simultaneously build a map of its surroundings and localize itself within that map. Odometry alone accumulates drift over time, making it unreliable for long trajectories. Visual landmarks provide loop closure opportunities to correct this drift, but require a robust optimization backend to fuse noisy measurements.</p></div>
+  <div class="sec"><h2>Approach</h2><p>The system detects AprilTags in each camera frame and extracts their relative pose using the known tag geometry and calibrated camera intrinsics. These measurements are encoded as factors in a factor graph, along with odometry factors between consecutive poses.</p><p>GTSAM's nonlinear optimizer (Levenberg-Marquardt) solves the full graph to find the maximum a posteriori estimate of all robot poses and landmark positions simultaneously. The factor graph formulation naturally handles the sparse structure of the problem and scales efficiently with trajectory length.</p></div>
+  <div class="sec"><h2>Key Features</h2>
+    <div class="feat-grid">
+      <div class="feat"><h4>Factor Graph Optimization</h4><p>GTSAM-based backend for globally consistent pose estimation with loop closure support.</p></div>
+      <div class="feat"><h4>AprilTag Detection</h4><p>Robust fiducial marker detection providing 6-DOF relative pose measurements from monocular images.</p></div>
+      <div class="feat"><h4>Camera Calibration</h4><p>Intrinsic calibration pipeline to ensure accurate projection models for landmark observations.</p></div>
+      <div class="feat"><h4>Drift Correction</h4><p>Landmark re-observations provide loop closures that eliminate accumulated odometry drift.</p></div>
+    </div>
+  </div>
+  <div class="sec"><h2>Results</h2><p>The optimized trajectory showed significant improvement over raw odometry, with landmark re-observations successfully closing loops and producing globally consistent maps. The system demonstrated robust performance across varying lighting conditions and viewing angles.</p></div>
+  <div class="sec"><h2>What I Learned</h2><p>This project gave me hands-on experience with probabilistic graphical models for robotics, the mechanics of factor graph construction and optimization, and the practical challenges of visual feature detection in real-world environments. I also deepened my understanding of camera models and SE(3) transformations.</p></div>
+  <div class="proj-links"><a href="#" class="pl pl-primary">View on GitHub</a><a href="../index.html#projects" class="pl pl-outline">← All Projects</a></div>
+</div>
+</body>
+</html>

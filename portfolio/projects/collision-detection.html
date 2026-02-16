@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML-Based Collision Detection | Yash</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--accent:#6c63ff;--accent2:#00d4aa;--text:#e8e8f0;--text2:#9999b0;--border:#2a2a40}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+  nav{position:fixed;top:0;width:100%;z-index:100;backdrop-filter:blur(20px);background:rgba(10,10,15,0.8);border-bottom:1px solid var(--border);padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+  nav .logo{font-weight:800;font-size:1.3rem;letter-spacing:-0.5px;text-decoration:none;color:var(--text)}
+  nav .logo span{color:var(--accent)}
+  .back-link{color:var(--text2);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:.4rem;transition:color .3s}
+  .back-link:hover{color:var(--accent)}
+  .project-hero{padding:8rem 2rem 3rem;max-width:900px;margin:0 auto;animation:fadeUp .6s ease}
+  .project-hero .icon{font-size:3rem;margin-bottom:1rem}
+  .project-hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;letter-spacing:-1px;line-height:1.2;margin-bottom:1rem}
+  .meta{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+  .meta-item{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--accent2)}
+  .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+  .tag{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.3rem .7rem;background:rgba(108,99,255,0.1);color:var(--accent);border-radius:4px;border:1px solid rgba(108,99,255,0.2)}
+  .project-content{max-width:900px;margin:0 auto;padding:0 2rem 5rem}
+  .img-placeholder{width:100%;aspect-ratio:16/9;background:var(--bg2);border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:.9rem;margin-bottom:2rem;overflow:hidden}
+  .img-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+  .sec{margin-bottom:3rem}
+  .sec h2{font-size:1.4rem;font-weight:700;margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border)}
+  .sec p{color:var(--text2);font-size:1rem;margin-bottom:1rem}
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+  .feat{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem}
+  .feat h4{font-size:.95rem;font-weight:600;margin-bottom:.3rem;color:var(--accent2)}
+  .feat p{font-size:.85rem;color:var(--text2);margin:0}
+  .proj-links{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap}
+  .pl{padding:.7rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s}
+  .pl-primary{background:var(--accent);color:#fff}
+  .pl-primary:hover{background:#5a52e0;transform:translateY(-2px)}
+  .pl-outline{border:1px solid var(--border);color:var(--text)}
+  .pl-outline:hover{border-color:var(--accent);color:var(--accent)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+  @media(max-width:600px){.feat-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="logo">Y<span>.</span>dev</a>
+  <a href="../index.html" class="back-link">← Back to Portfolio</a>
+</nav>
+
+<div class="project-hero">
+  <div class="icon">🤖</div>
+  <h1>ML-Based Collision Detection for 7-DOF Robot Arms</h1>
+  <div class="meta">
+    <div class="meta-item">📅 2025</div>
+    <div class="meta-item">🏫 Northeastern University</div>
+    <div class="meta-item">📂 Graduate Coursework</div>
+  </div>
+  <div class="tags">
+    <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Motion Planning</span><span class="tag">Signed Distance Functions</span><span class="tag">Neural Networks</span>
+  </div>
+</div>
+
+<div class="project-content">
+  <div class="img-placeholder">📸 Add project screenshot or architecture diagram here</div>
+
+  <div class="sec">
+    <h2>Overview</h2>
+    <p>Developed a machine learning-based collision detection system for a 7-DOF robotic manipulator. The system uses neural networks trained on signed distance function (SDF) data to predict collisions in real time, enabling significantly faster motion planning compared to traditional geometric methods.</p>
+  </div>
+
+  <div class="sec">
+    <h2>Problem</h2>
+    <p>Traditional collision detection for high-DOF robot arms relies on mesh-based geometric intersection tests that are computationally expensive. These checks become a major bottleneck in sampling-based motion planning algorithms that require thousands of collision queries per planning cycle. For time-critical applications like surgical robotics, this latency is unacceptable.</p>
+  </div>
+
+  <div class="sec">
+    <h2>Approach</h2>
+    <p>The core idea is to learn a continuous signed distance field that maps robot joint configurations to minimum distances from obstacles. By training a neural network to approximate this mapping, collision queries reduce to a single forward pass — microseconds rather than milliseconds.</p>
+    <p>The pipeline involves generating training data by sampling configurations across the joint space, computing ground-truth signed distances using geometric methods, and training a feedforward neural network to regress these distance values. The trained model provides both binary collision classification and continuous distance information useful for gradient-based motion planners.</p>
+  </div>
+
+  <div class="sec">
+    <h2>Key Features</h2>
+    <div class="feat-grid">
+      <div class="feat">
+        <h4>Real-Time Inference</h4>
+        <p>Neural network forward pass enables collision checks orders of magnitude faster than mesh-based methods.</p>
+      </div>
+      <div class="feat">
+        <h4>Signed Distance Output</h4>
+        <p>Continuous distance values provide gradient information for optimization-based motion planners.</p>
+      </div>
+      <div class="feat">
+        <h4>7-DOF Configuration Space</h4>
+        <p>Handles the full 7-dimensional C-space of a manipulator arm with learned generalization.</p>
+      </div>
+      <div class="feat">
+        <h4>Planner Integration</h4>
+        <p>Drop-in replacement for geometric collision checkers in RRT, PRM, and trajectory optimization frameworks.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2>Results</h2>
+    <p>The neural network achieved high classification accuracy on held-out test configurations while providing collision query speeds suitable for real-time motion planning loops. The learned SDF enabled smooth trajectory optimization by providing analytical gradients through the network.</p>
+  </div>
+
+  <div class="sec">
+    <h2>What I Learned</h2>
+    <p>This project deepened my understanding of how learned representations can replace expensive geometric computations in robotics. I gained experience in designing training data pipelines for robotics applications, balancing network capacity with inference speed, and integrating ML models into existing motion planning architectures.</p>
+  </div>
+
+  <div class="proj-links">
+    <a href="#" class="pl pl-primary">View on GitHub</a>
+    <a href="../index.html#projects" class="pl pl-outline">← All Projects</a>
+  </div>
+</div>
+</body>
+</html>
